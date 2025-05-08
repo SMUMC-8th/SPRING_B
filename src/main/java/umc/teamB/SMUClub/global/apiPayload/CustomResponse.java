@@ -41,4 +41,14 @@ public class CustomResponse<T> {
     public static <T> CustomResponse<T> onFailure(String code, String message) {
         return new CustomResponse<>(false, code, message, null);
     }
+
+    // value() -> 해당 상태의 숫자 코드(int)를 반환
+    // ex) HttpStatus.NOT_FOUND.value() -> 404
+
+    // String.valueOf() -> 숫자 상태 코드를 문자열(String)로 바꾸기 위해 사용
+    // ex) String.valueOf(200) -> "200"
+
+    // status.getReasonPhrase() -> 상태 코드에 대응되는 표준 메시지를 반환
+    // ex) HttpStatus.OK.getReasonPhrase() -> "OK"
 }
+
