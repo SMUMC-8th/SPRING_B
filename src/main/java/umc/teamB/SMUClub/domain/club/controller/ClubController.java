@@ -9,6 +9,8 @@ import umc.teamB.SMUClub.global.apiPayload.CustomResponse;
 
 import java.util.List;
 
+import static umc.teamB.SMUClub.domain.club.code.ClubSuccessCode.CLUB200;
+
 @RestController
 @RequestMapping("/clubs")
 @RequiredArgsConstructor
@@ -19,6 +21,6 @@ public class ClubController {
     @GetMapping
     public CustomResponse<List<ClubResDTO.ClubResponseDTO>> searchClubs(@RequestParam String keyword) {
         List<ClubResDTO.ClubResponseDTO> results = clubQueryService.searchClubs(keyword);
-        return CustomResponse.onSuccess(results);
+        return CustomResponse.onSuccess(CLUB200, results);
     }
 }
