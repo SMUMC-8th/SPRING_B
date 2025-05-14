@@ -29,6 +29,7 @@ public class Club extends BaseEntity {
     private String description;
     private String instagram;
     private String imageUrl;
+    private String target;
 
     // 모집 시작, 마감일
     private LocalDate start;
