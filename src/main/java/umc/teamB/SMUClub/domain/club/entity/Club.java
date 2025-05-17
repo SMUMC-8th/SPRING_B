@@ -31,8 +31,11 @@ public class Club extends BaseEntity {
     private String imageUrl;
 
     // 모집 시작, 마감일
-    private LocalDate start;
-    private LocalDate end;
+    private LocalDate firstStart;
+    private LocalDate firstEnd;
+
+    private LocalDate secondStart;
+    private LocalDate secondEnd;
 
     // EnumType은 무조건 STRING 사용할 것
     @Enumerated(EnumType.STRING)
