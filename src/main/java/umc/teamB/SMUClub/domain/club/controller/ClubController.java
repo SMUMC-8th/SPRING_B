@@ -11,9 +11,11 @@ import umc.teamB.SMUClub.domain.club.enums.Category;
 import umc.teamB.SMUClub.domain.club.service.query.ClubQueryService;
 import umc.teamB.SMUClub.global.apiPayload.CustomResponse;
 
+import javax.xml.transform.OutputKeys;
 import java.util.List;
 
 import static umc.teamB.SMUClub.domain.club.code.ClubSuccessCode.CLUB200;
+import static umc.teamB.SMUClub.global.apiPayload.code.GeneralSuccessCode.OK;
 
 @RestController
 @RequestMapping("/clubs")
@@ -23,12 +25,12 @@ public class ClubController {
 
     private final ClubQueryService clubQueryService;
 
-    @PostMapping("/clubs/matching")
+    @RequestMapping(value="/matching", method = {RequestMethod.POST})
     public CustomResponse<MatchResDTO.MatchResponseListDTO> recommendClubs(
             @RequestBody MatchReqDTO.MatchRequestDTO request) {
         MatchResDTO.MatchResponseListDTO result = clubQueryService.getMatchClubs(request);
 
-        return CustomResponse.onSuccess(result);
+        return CustomResponse.onSuccess(OK, result);
     }
 
     @GetMapping("/search")
@@ -56,7 +58,7 @@ public class ClubController {
     @Operation(summary="동아리 일정 출력 API -by 양효인")
     public CustomResponse<ClubResDTO.ClubDateDTO> getDates(@PathVariable Long clubId){
         ClubResDTO.ClubDateDTO result = clubQueryService.getDates(clubId);
-        return CustomResponse.onSuccess(result);
+        return CustomResponse.onSuccess(OK, result);
     }
 
 }

@@ -11,6 +11,8 @@ import umc.teamB.SMUClub.global.apiPayload.CustomResponse;
 
 import java.util.List;
 
+import static umc.teamB.SMUClub.global.apiPayload.code.GeneralSuccessCode.OK;
+
 @RestController
 @RequiredArgsConstructor
 public class NoticeController {
@@ -19,13 +21,13 @@ public class NoticeController {
     @GetMapping("/notices")
     public CustomResponse<List<NoticeResponseDTO.NoticePreviewListDTO>> getNotices() {
         List<NoticeResponseDTO.NoticePreviewListDTO> notices = noticeQueryService.getNotices();
-        return CustomResponse.onSuccess(notices);
+        return CustomResponse.onSuccess(OK, notices);
     }
 
     @GetMapping("/notices/{noticeId}")
     public CustomResponse<NoticeResponseDTO.NoticePreviewDTO> getNotice(@PathVariable Long noticeId) {
         Notice notice = noticeQueryService.getNotice(noticeId);
-        return CustomResponse.onSuccess(NoticeResponseDTO.NoticePreviewDTO.from(notice));
+        return CustomResponse.onSuccess(OK, NoticeResponseDTO.NoticePreviewDTO.from(notice));
     }
 
 }

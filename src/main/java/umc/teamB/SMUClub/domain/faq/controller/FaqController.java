@@ -10,6 +10,8 @@ import umc.teamB.SMUClub.global.apiPayload.CustomResponse;
 
 import java.util.List;
 
+import static umc.teamB.SMUClub.global.apiPayload.code.GeneralSuccessCode.OK;
+
 @RestController
 @RequiredArgsConstructor
 public class FaqController {
@@ -18,7 +20,7 @@ public class FaqController {
     @GetMapping("/faqs")
     public CustomResponse<List<FaqResponseDTO.GetFaqDTO>> getFaqs() {
         List<FaqResponseDTO.GetFaqDTO> faqDTOs = faqQueryService.getFaqs();
-        return CustomResponse.onSuccess(faqDTOs);
+        return CustomResponse.onSuccess(OK, faqDTOs);
     }
 
 }

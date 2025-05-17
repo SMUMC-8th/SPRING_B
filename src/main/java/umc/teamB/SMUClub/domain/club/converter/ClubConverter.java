@@ -36,8 +36,10 @@ public class ClubConverter {
                 .imageUrl(club.getImageUrl())
                 .description(club.getDescription())
                 .target(club.getTarget())  // 예시로, 'target' 필드가 있다고 가정
-                .start(club.getStart())  // LocalDate 타입 필드라고 가정
-                .end(club.getEnd())  // LocalDate 타입 필드라고 가정
+                .firstStart(club.getFirstStart())  // LocalDate 타입 필드라고 가정
+                .firstEnd(club.getFirstEnd())  // LocalDate 타입 필드라고 가정
+                .secondStart(club.getSecondStart())  // LocalDate 타입 필드라고 가정
+                .secondEnd(club.getSecondEnd())  // LocalDate 타입 필드라고 가정
                 .instagram(club.getInstagram())  // Instagram URL 혹은 아이디
                 .build();
     }
