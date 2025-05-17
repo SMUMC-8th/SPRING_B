@@ -27,8 +27,10 @@ public class ClubResDTO {
             String imageUrl,
             String description,
             String target,
-            LocalDate start,
-            LocalDate end,
+            LocalDate firstStart,
+            LocalDate firstEnd,
+            LocalDate secondStart,
+            LocalDate secondEnd,
             String instagram
     ) {}
 
