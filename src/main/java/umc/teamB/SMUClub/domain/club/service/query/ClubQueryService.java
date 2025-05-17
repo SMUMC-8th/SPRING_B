@@ -13,4 +13,5 @@ public interface ClubQueryService {
     List<ClubResDTO.ClubResponseDTO> searchClubs(String keyword);
     List<ClubResDTO.ClubResponseDTO> getClubsByCategory(Category category);
     ClubResDTO.ClubDetailResponseDTO getClubById(Long id);
+    ClubResDTO.ClubDateDTO getDates(Long id);
 }

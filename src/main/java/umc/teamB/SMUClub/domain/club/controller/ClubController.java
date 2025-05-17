@@ -51,4 +51,12 @@ public class ClubController {
         ClubResDTO.ClubDetailResponseDTO result = clubQueryService.getClubById(clubId);
         return CustomResponse.onSuccess(CLUB200, result);
     }
+    
+    @GetMapping("/calendar/{clubId}")
+    @Operation(summary="동아리 일정 출력 API -by 양효인")
+    public CustomResponse<ClubResDTO.ClubDateDTO> getDates(@PathVariable Long clubId){
+        ClubResDTO.ClubDateDTO result = clubQueryService.getDates(clubId);
+        return CustomResponse.onSuccess(result);
+    }
+
 }

@@ -31,6 +31,14 @@ public class ClubResDTO {
             LocalDate end,
             String instagram
     ) {}
+
+    @Builder
+    public record ClubDateDTO(
+            LocalDate firstStart,
+            LocalDate firstEnd,
+            LocalDate secondStart,
+            LocalDate secondEnd
+    ) {}
 }
 
 //"result":

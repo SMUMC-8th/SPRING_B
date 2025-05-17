@@ -92,4 +92,12 @@ public class ClubQueryServiceImpl implements ClubQueryService {
         return score;
     }
 
+    @Override
+    public ClubResDTO.ClubDateDTO getDates(Long id) {
+        Club club = clubRepository.findById(id)
+                .orElseThrow(() -> new ClubException(ClubErrorCode.NOT_FOUND_404));
+
+        return ClubConverter.toClubDateDto(club);
+
+    }
 }

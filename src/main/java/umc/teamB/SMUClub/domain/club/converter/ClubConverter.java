@@ -42,4 +42,13 @@ public class ClubConverter {
                 .build();
     }
 
+    public static ClubResDTO.ClubDateDTO toClubDateDto(Club club) {
+        return ClubResDTO.ClubDateDTO.builder()
+                .firstStart(club.getFirstStart())
+                .firstEnd(club.getFirstEnd())
+                .secondStart(club.getSecondStart())
+                .secondEnd(club.getSecondEnd())
+                .build();
+    }
+
 }
