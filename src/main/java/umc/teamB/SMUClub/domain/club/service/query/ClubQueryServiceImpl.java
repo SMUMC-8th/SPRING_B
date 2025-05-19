@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.teamB.SMUClub.domain.club.converter.ClubConverter;
 import umc.teamB.SMUClub.domain.club.converter.MatchConverter;
-import umc.teamB.SMUClub.domain.club.dto.ClubResDTO;
+import umc.teamB.SMUClub.domain.club.dto.response.ClubResDTO;
 import umc.teamB.SMUClub.domain.club.dto.request.MatchReqDTO;
 import umc.teamB.SMUClub.domain.club.dto.response.MatchResDTO;
 import umc.teamB.SMUClub.domain.club.entity.Club;
@@ -63,7 +63,8 @@ public class ClubQueryServiceImpl implements ClubQueryService {
 
     @Override
     public ClubResDTO.ClubDetailResponseDTO getClubById(Long id) {
-        Club club = clubRepository.findById(id).orElseThrow(() -> new ClubException(ClubErrorCode.NOT_FOUND_404));
+        Club club = clubRepository.findById(id)
+                .orElseThrow(() -> new ClubException(ClubErrorCode.NOT_FOUND_404));
         return ClubConverter.toClubDetailResponseDto(club);
     }
 
