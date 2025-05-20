@@ -14,4 +14,5 @@ public interface ClubQueryService {
     List<ClubResDTO.ClubResponseDTO> getClubsByCategory(Category category);
     ClubResDTO.ClubDetailResponseDTO getClubById(Long id);
     ClubResDTO.ClubDateDTO getDates(Long id);
+    List<ClubResDTO.ClubResponseDTO> getRandomClubs();
 }

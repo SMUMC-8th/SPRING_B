@@ -16,10 +16,7 @@ import umc.teamB.SMUClub.domain.club.exception.ClubErrorCode;
 import umc.teamB.SMUClub.domain.club.exception.ClubException;
 import umc.teamB.SMUClub.domain.club.repository.ClubRepository;
 
-import java.util.AbstractMap;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Service
@@ -100,5 +97,23 @@ public class ClubQueryServiceImpl implements ClubQueryService {
 
         return ClubConverter.toClubDateDto(club);
 
+    }
+
+    @Override
+    public List<ClubResDTO.ClubResponseDTO> getRandomClubs() {
+        List<Club> clubs = new ArrayList<>();
+
+        for (Category category : Category.values()) {
+            Club club = clubRepository.findRandomClubs(category.name());
+            if (club != null) {
+                clubs.add(club);
+            }
+        }
+
+        if (clubs.isEmpty()) {
+            throw new ClubException(ClubErrorCode.NOT_FOUND_404);
+        }
+
+        return ClubConverter.toClubResponseDtoList(clubs);
     }
 }

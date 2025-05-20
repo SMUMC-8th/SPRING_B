@@ -24,4 +24,9 @@ public interface ClubRepository extends JpaRepository<Club, Long> {
     // 카테고리별 리스트
     List<Club> findByCategory(Category category);
 
+    // 랜덤 찾기 (메인화면)
+    @Query(value = "SELECT * FROM club WHERE category = :category ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    Club findRandomClubs(@Param("category") String category);
+
+
 }
