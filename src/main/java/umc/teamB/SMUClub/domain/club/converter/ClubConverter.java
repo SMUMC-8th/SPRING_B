@@ -1,7 +1,8 @@
 package umc.teamB.SMUClub.domain.club.converter;
 
-import umc.teamB.SMUClub.domain.club.dto.ClubResDTO;
+import umc.teamB.SMUClub.domain.club.dto.response.ClubResDTO;
 import umc.teamB.SMUClub.domain.club.entity.Club;
+import umc.teamB.SMUClub.domain.clubimage.entity.ClubImage;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,11 +13,17 @@ public class ClubConverter {
         return ClubResDTO.ClubResponseDTO.builder()
                 .clubId(club.getId())
                 .name(club.getName())
-                .imageUrl(club.getImageUrl())
-                .description(club.getDescription())
+                // 대표 이미지 한 개만 가져옴
+                .imageUrl(club.getImages().stream()
+                        .filter(ClubImage::isThumbnail)
+                        .map(ClubImage::getImageUrl)
+                        .findFirst()
+                        .orElse(null)
+                )
                 .category(club.getCategory())
+                .description(club.getDescription())
                 .hashtags(club.getClubHashtagList().stream()
-                    .map(ch -> ch.getHashtag().getName())
+                    .map(ch -> "# " + ch.getHashtag().getName())
                     .collect(Collectors.toList()))
                 .build();
 
@@ -33,14 +40,15 @@ public class ClubConverter {
                 .clubId(club.getId())
                 .name(club.getName())
                 .category(club.getCategory())  // Category enum이므로 그대로 사용
-                .imageUrl(club.getImageUrl())
+                .imageUrl(club.getImages().stream()
+                        .map(ClubImage::getImageUrl)
+                        .collect(Collectors.toList()))
                 .description(club.getDescription())
-                .target(club.getTarget())  // 예시로, 'target' 필드가 있다고 가정
-                .firstStart(club.getFirstStart())  // LocalDate 타입 필드라고 가정
-                .firstEnd(club.getFirstEnd())  // LocalDate 타입 필드라고 가정
-                .secondStart(club.getSecondStart())  // LocalDate 타입 필드라고 가정
-                .secondEnd(club.getSecondEnd())  // LocalDate 타입 필드라고 가정
-                .instagram(club.getInstagram())  // Instagram URL 혹은 아이디
+                .target(club.getTarget())  // 모집 대상
+                .recruitmentDate(club.getRecruitmentDate())
+                .recruitmentMethod(club.getRecruitmentMethod())
+                .activity(club.getActivity())
+                .instagram(club.getInstagram())
                 .build();
     }
 

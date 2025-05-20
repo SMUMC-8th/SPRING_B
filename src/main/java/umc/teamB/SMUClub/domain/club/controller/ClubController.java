@@ -4,14 +4,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import umc.teamB.SMUClub.domain.club.dto.ClubResDTO;
+import umc.teamB.SMUClub.domain.club.dto.response.ClubResDTO;
 import umc.teamB.SMUClub.domain.club.dto.request.MatchReqDTO;
 import umc.teamB.SMUClub.domain.club.dto.response.MatchResDTO;
 import umc.teamB.SMUClub.domain.club.enums.Category;
 import umc.teamB.SMUClub.domain.club.service.query.ClubQueryService;
 import umc.teamB.SMUClub.global.apiPayload.CustomResponse;
 
-import javax.xml.transform.OutputKeys;
 import java.util.List;
 
 import static umc.teamB.SMUClub.domain.club.code.ClubSuccessCode.CLUB200;
@@ -25,7 +24,8 @@ public class ClubController {
 
     private final ClubQueryService clubQueryService;
 
-    @RequestMapping(value="/matching", method = {RequestMethod.POST})
+    @PostMapping(value="/matching")
+    @Operation(summary = "동아리 매칭 API -by 서동혁")
     public CustomResponse<MatchResDTO.MatchResponseListDTO> recommendClubs(
             @RequestBody MatchReqDTO.MatchRequestDTO request) {
         MatchResDTO.MatchResponseListDTO result = clubQueryService.getMatchClubs(request);

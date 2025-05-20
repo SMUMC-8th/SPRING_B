@@ -1,11 +1,10 @@
-package umc.teamB.SMUClub.domain.club.dto;
+package umc.teamB.SMUClub.domain.club.dto.response;
 
 import lombok.Builder;
 import umc.teamB.SMUClub.domain.club.enums.Category;
 
 import java.time.LocalDate;
 import java.util.List;
-
 
 public class ClubResDTO {
 
@@ -24,13 +23,12 @@ public class ClubResDTO {
             Long clubId,
             String name,
             Category category,
-            String imageUrl,
+            List<String> imageUrl,
             String description,
             String target,
-            LocalDate firstStart,
-            LocalDate firstEnd,
-            LocalDate secondStart,
-            LocalDate secondEnd,
+            String recruitmentDate,
+            String recruitmentMethod,
+            String activity,
             String instagram
     ) {}
 
@@ -42,15 +40,3 @@ public class ClubResDTO {
             LocalDate secondEnd
     ) {}
 }
-
-//"result":
-//        {
-//        "club_id": 1,
-//        "name": "가온누리",
-//        “category”: “STUDY”,
-//        "description": "한줄소개",
-//        “target”: ”모집대상”,
-//        “start”: 모집시작일,
-//        “end”: 모집 마감일,
-//        “instagram”: “인스타그램 아이디”
-//        }
