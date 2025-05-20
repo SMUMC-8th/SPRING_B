@@ -46,6 +46,7 @@ public class ClubCommandServiceImpl implements ClubCommandService {
                 .map(imageDTO -> ClubImage.builder()
                         .imageUrl(imageDTO.imageUrl())
                         .isThumbnail(imageDTO.isThumbnail())
+                        .club(club)
                         .build())
                 .toList();
 

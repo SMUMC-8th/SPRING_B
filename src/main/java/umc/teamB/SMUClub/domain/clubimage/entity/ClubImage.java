@@ -16,6 +16,7 @@ public class ClubImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 1000)
     private String imageUrl;
 
     private boolean isThumbnail; // 대표 이미지 여부

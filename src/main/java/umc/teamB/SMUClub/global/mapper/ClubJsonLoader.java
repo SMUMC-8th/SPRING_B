@@ -19,7 +19,7 @@ public class ClubJsonLoader {
     private final ObjectMapper objectMapper;
     private final ClubCommandService clubCommandService;
 
-    @PostConstruct // 한 번 실행 후 주석처리 할 것
+    // @PostConstruct // 한 번 실행 후 주석처리 할 것
     public void loadClubsFromJson() throws IOException {
         File file = new File("src/main/resources/club_request_dto_list.json");
         List<ClubReqDTO.ClubRequestDTO> clubDTOs = Arrays.asList(

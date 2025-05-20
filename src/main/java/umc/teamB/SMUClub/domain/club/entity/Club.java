@@ -56,9 +56,11 @@ public class Club extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private RecruitmentType recruitmentType;
 
+    @Builder.Default
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClubImage> images = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClubHashtag> clubHashtagList = new ArrayList<>();
 }
