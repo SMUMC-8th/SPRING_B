@@ -23,7 +23,7 @@ public class MainController {
 
     private final ClubQueryService clubQueryService;
 
-    @GetMapping
+    @GetMapping("/")
     @Operation(summary = "카테고리별 동아리 랜덤 띄우는 API -by 윤영석")
     public CustomResponse<List<ClubResDTO.ClubResponseDTO>> randomClubs() {
         List<ClubResDTO.ClubResponseDTO> results = clubQueryService.getRandomClubs();
