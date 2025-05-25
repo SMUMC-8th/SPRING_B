@@ -13,6 +13,7 @@ public class MatchResDTO {
             Long clubId,
             String name,
             String matchLevel, // "완벽 일치", "일부 조건 일치"
+            String imageUrl,
             List<String> hashtags,
             String detailUrl // 클릭시 각 동아리 개인 검색으로 이동
     ) {}

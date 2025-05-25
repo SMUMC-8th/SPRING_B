@@ -2,6 +2,7 @@ package umc.teamB.SMUClub.domain.club.converter;
 
 import umc.teamB.SMUClub.domain.club.dto.response.MatchResDTO;
 import umc.teamB.SMUClub.domain.club.entity.Club;
+import umc.teamB.SMUClub.domain.clubimage.entity.ClubImage;
 
 import java.util.stream.Collectors;
 
@@ -13,6 +14,12 @@ public class MatchConverter {
                 .clubId(club.getId())
                 .name(club.getName())
                 .matchLevel(scoreToLevel(matchScore))
+                .imageUrl(club.getImages().stream()
+                        .filter(ClubImage::isThumbnail)
+                        .map(ClubImage::getImageUrl)
+                        .findFirst()
+                        .orElse(null)
+                )
                 .hashtags(club.getClubHashtagList().stream()
                         .map(ch -> "#" + ch.getHashtag().getName())
                         .collect(Collectors.toList()))

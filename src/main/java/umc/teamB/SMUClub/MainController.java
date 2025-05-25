@@ -4,8 +4,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.teamB.SMUClub.domain.club.dto.response.ClubResDTO;
 import umc.teamB.SMUClub.domain.club.service.query.ClubQueryService;
@@ -16,7 +14,6 @@ import java.util.List;
 import static umc.teamB.SMUClub.domain.club.code.ClubSuccessCode.CLUB200;
 
 @RestController
-@RequestMapping
 @RequiredArgsConstructor
 @Tag(name = "Main", description = "Main 화면 API")
 public class MainController {
